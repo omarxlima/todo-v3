@@ -10,22 +10,23 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+// import {ref} from 'vue'
+import axios from 'axios'
+
+import { onMounted} from 'vue'
+import TaskService from '@/services/todos.service'
 export default {
     name: 'TaskView',
     setup() {
-        const todos = [
-            {identify:1, name: 'tarefa 01', completed: true},
-            {identify:2, name: 'tarefa 02', completed: true},
-            {identify:3, name: 'tarefa 03', completed: true},
-
-        ]
-        const name = ref('defalt value') //reativa
-        name.value = 'teste 2' //mudar valor reativo
-        return {
-            todos,
-            name
-        }
-    }
+        onMounted(()=> {
+            axios.get('/todos')
+            // TaskService.getAll()
+            //         .then(response => {
+            //             console.log(response)
+            //         })
+            //         .cath(error => console.log(error))
+        
+    })
+}
 }
 </script>
